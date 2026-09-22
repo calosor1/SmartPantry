@@ -2,7 +2,7 @@
 //  SmartPantryApp.swift
 //  SmartPantry
 //
-//  Created by Alexandre on 2026-09-22.
+//  Created by Alexandre on 2026-04-05.
 //
 
 import SwiftUI

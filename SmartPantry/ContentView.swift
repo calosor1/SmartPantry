@@ -2,20 +2,26 @@
 //  ContentView.swift
 //  SmartPantry
 //
-//  Created by Alexandre on 2026-09-22.
+//  Created by Alexandre on 2026-04-05.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var viewModel = AuthViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            if viewModel.isAuthenticated {
+                RecipeListView()
+            } else {
+                LoginView(viewModel: viewModel)
+            }
         }
-        .padding()
+        .task {
+            await viewModel.fetchUser()
+        }
     }
 }
 
